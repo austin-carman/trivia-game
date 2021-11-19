@@ -7,7 +7,6 @@ import {
   MenuItem,
   InputLabel,
   FormHelperText,
-  FormLabel,
   RadioGroup,
   FormControlLabel,
   Radio,
@@ -36,7 +35,6 @@ const Form = () => {
         `https://opentdb.com/api.php?amount=20&category=${formValues.category}&difficulty=${formValues.difficulty}`
       )
       .then((res) => {
-        console.log(res.data.results);
         setQuestions(res.data.results);
         setFormValues(initialFormValues);
       })
@@ -71,16 +69,26 @@ const Form = () => {
       </FormControl>
 
       <FormControl component="fieldset">
-        <FormLabel component="legend">Difficulty</FormLabel>
         <RadioGroup
+          row
           aria-label="difficulty"
           name="difficulty"
           defaultValue="easy"
           value={formValues.difficulty}
           onChange={handleChange}
         >
-          <FormControlLabel value="easy" control={<Radio />} label="Beginner" />
-          <FormControlLabel value="medium" control={<Radio />} label="Expert" />
+          <FormControlLabel
+            value="easy"
+            control={<Radio />}
+            label="Beginner"
+            labelPlacement="bottom"
+          />
+          <FormControlLabel
+            value="medium"
+            control={<Radio />}
+            label="Expert"
+            labelPlacement="bottom"
+          />
         </RadioGroup>
       </FormControl>
       <Button
@@ -90,7 +98,7 @@ const Form = () => {
       >
         Start
       </Button>
-      {questions && <QuestionsList questions={questions} />}
+      {questions.length > 0 && <QuestionsList questions={questions} />}
     </div>
   );
 };

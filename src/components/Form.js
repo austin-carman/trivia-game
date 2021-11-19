@@ -8,31 +8,32 @@ import {
 } from "@mui/material";
 
 const Form = () => {
-  // const initialForm = {
-  //   category: "",
-  //   difficulty: "",
-  // };
-  // eslint-disable-next-line no-unused-vars
-  const [formValues, setFormValues] = useState("");
+  const initialForm = {
+    category: "",
+    difficulty: "",
+  };
+
+  const [formValues, setFormValues] = useState(initialForm);
+
+  console.log(formValues);
 
   const handleChange = (e) => {
-    const { value } = e.target;
-    setFormValues(value);
-    // setFormValues({ ...formValues, [name]: value });
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
   };
 
   return (
     <div>
       <h2>Form</h2>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-label">Category</InputLabel>
+      <FormControl required sx={{ m: 1, minWidth: 200 }}>
+        <InputLabel id="question-category-label">Category</InputLabel>
         <Select
           labelId="question-category-label"
           id="question-category"
-          value={formValues}
+          value={formValues.category}
           onChange={handleChange}
-          autoWidth
           label="Category *"
+          name="category"
         >
           <MenuItem value={"General Knowledge"}>General Knowledge</MenuItem>
           <MenuItem value={"Film"}>Film</MenuItem>

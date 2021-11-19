@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import QuestionsList from "./QuestionsList";
 import {
   FormControl,
   Select,
@@ -21,6 +22,7 @@ const Form = () => {
 
   const [formValues, setFormValues] = useState(initialFormValues);
   const [disabled, setDisabled] = useState(true);
+  const [questions, setQuestions] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -35,8 +37,8 @@ const Form = () => {
       )
       .then((res) => {
         console.log(res.data.results);
-        // setQuestions(res.data.results);
-        // setFormValues(initialFormValues);
+        setQuestions(res.data.results);
+        setFormValues(initialFormValues);
       })
       .catch((err) => {
         console.log(err);
@@ -88,6 +90,7 @@ const Form = () => {
       >
         Start
       </Button>
+      {questions && <QuestionsList questions={questions} />}
     </div>
   );
 };

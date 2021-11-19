@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import {
   FormControl,
   Select,
@@ -13,12 +14,12 @@ import {
 } from "@mui/material";
 
 const Form = () => {
-  const initialForm = {
+  const initialFormValues = {
     category: "",
     difficulty: "easy",
   };
 
-  const [formValues, setFormValues] = useState(initialForm);
+  const [formValues, setFormValues] = useState(initialFormValues);
   const [disabled, setDisabled] = useState(true);
 
   const handleChange = (e) => {
@@ -28,7 +29,18 @@ const Form = () => {
   };
 
   const handleButtonClick = () => {
-    console.log("clicked start");
+    axios
+      .get(
+        `https://opentdb.com/api.php?amount=20&category=${formValues.category}&difficulty=${formValues.difficulty}`
+      )
+      .then((res) => {
+        console.log(res.data.results);
+        // setQuestions(res.data.results);
+        // setFormValues(initialFormValues);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -44,14 +56,14 @@ const Form = () => {
           label="Category *"
           name="category"
         >
-          <MenuItem value={"General Knowledge"}>General Knowledge</MenuItem>
-          <MenuItem value={"Film"}>Film</MenuItem>
-          <MenuItem value={"Music"}>Music</MenuItem>
-          <MenuItem value={"TV"}>TV</MenuItem>
-          <MenuItem value={"Science and Nature"}>Science and Nature</MenuItem>
-          <MenuItem value={"Sports"}>Sports</MenuItem>
-          <MenuItem value={"Geography"}>Geography</MenuItem>
-          <MenuItem value={"History"}>History</MenuItem>
+          <MenuItem value={"9"}>General Knowledge</MenuItem>
+          <MenuItem value={"11"}>Film</MenuItem>
+          <MenuItem value={"12"}>Music</MenuItem>
+          <MenuItem value={"14"}>TV</MenuItem>
+          <MenuItem value={"17"}>Science and Nature</MenuItem>
+          <MenuItem value={"21"}>Sports</MenuItem>
+          <MenuItem value={"22"}>Geography</MenuItem>
+          <MenuItem value={"23"}>History</MenuItem>
         </Select>
         <FormHelperText>Required</FormHelperText>
       </FormControl>

@@ -5,12 +5,16 @@ import {
   MenuItem,
   InputLabel,
   FormHelperText,
+  FormLabel,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
 } from "@mui/material";
 
 const Form = () => {
   const initialForm = {
     category: "",
-    difficulty: "",
+    difficulty: "easy",
   };
 
   const [formValues, setFormValues] = useState(initialForm);
@@ -45,6 +49,20 @@ const Form = () => {
           <MenuItem value={"History"}>History</MenuItem>
         </Select>
         <FormHelperText>Required</FormHelperText>
+      </FormControl>
+
+      <FormControl component="fieldset">
+        <FormLabel component="legend">Difficulty</FormLabel>
+        <RadioGroup
+          aria-label="difficulty"
+          name="difficulty"
+          defaultValue="easy"
+          value={formValues.difficulty}
+          onChange={handleChange}
+        >
+          <FormControlLabel value="easy" control={<Radio />} label="Beginner" />
+          <FormControlLabel value="medium" control={<Radio />} label="Expert" />
+        </RadioGroup>
       </FormControl>
     </div>
   );

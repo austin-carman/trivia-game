@@ -19,12 +19,12 @@ const Form = () => {
   };
 
   const [formValues, setFormValues] = useState(initialForm);
-
-  console.log(formValues);
+  const [disabled, setDisabled] = useState(true);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
+    setDisabled(false);
   };
 
   const handleButtonClick = () => {
@@ -69,7 +69,11 @@ const Form = () => {
           <FormControlLabel value="medium" control={<Radio />} label="Expert" />
         </RadioGroup>
       </FormControl>
-      <Button variant="contained" disabled onClick={handleButtonClick}>
+      <Button
+        variant="contained"
+        disabled={disabled}
+        onClick={handleButtonClick}
+      >
         Start
       </Button>
     </div>

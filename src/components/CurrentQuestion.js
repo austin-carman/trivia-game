@@ -20,8 +20,6 @@ const CurrentQuestion = (props) => {
   const answers = [correctAnswer, ...incorrectAnswers];
   const shuffledAnswers = shuffleArr(answers);
 
-  console.log(answers);
-
   return (
     <div>
       <Card sx={{ minWidth: 100 }} variant="outlined">
@@ -31,18 +29,37 @@ const CurrentQuestion = (props) => {
           </Typography>
         </CardContent>
         <CardActions>
-          {shuffledAnswers.map((answer, index) => {
-            return (
+          {question.type === "boolean" ? (
+            <div>
               <Button
                 variant="outlined"
                 size="small"
-                key={index}
                 onClick={handleClickAnswer}
               >
-                {answer}
+                True
               </Button>
-            );
-          })}
+              <Button
+                variant="outlined"
+                size="small"
+                onClick={handleClickAnswer}
+              >
+                False
+              </Button>
+            </div>
+          ) : (
+            shuffledAnswers.map((answer, index) => {
+              return (
+                <Button
+                  variant="outlined"
+                  size="small"
+                  key={index}
+                  onClick={handleClickAnswer}
+                >
+                  {answer}
+                </Button>
+              );
+            })
+          )}
         </CardActions>
       </Card>
     </div>

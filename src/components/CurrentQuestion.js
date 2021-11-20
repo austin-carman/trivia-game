@@ -30,7 +30,7 @@ const CurrentQuestion = (props) => {
 
   return (
     <div>
-      <Card sx={{ minWidth: 100 }} variant="outlined">
+      <Card sx={{ width: "60%" }} variant="outlined">
         <CardContent>
           <Typography variant="h5" component="div">
             {decodedQuestion}

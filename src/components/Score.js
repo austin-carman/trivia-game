@@ -1,20 +1,20 @@
 import PropTypes from "prop-types";
 import { saveHighScore } from "../helperFunctions/helperFunctions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Score = (props) => {
   const { score, category } = props;
 
-  let highScore = 0;
+  const [highScore, setHighScore] = useState(0);
 
   useEffect(() => {
-    highScore = saveHighScore(score, category);
+    const topScore = saveHighScore(score, category);
+    setHighScore(topScore);
   }, []);
 
   return (
     <div>
-      <h3>Score: {score}</h3>
-      <h3>High Score: {highScore}</h3>
+      <h3>Previous High Score: {highScore}</h3>
     </div>
   );
 };

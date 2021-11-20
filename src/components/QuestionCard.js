@@ -7,21 +7,17 @@ import {
   Button,
 } from "@mui/material";
 import { shuffleArr } from "../helperFunctions/helperFunctions";
-import he from "he";
+import { decodeQuestionObj } from "../helperFunctions/helperFunctions";
 
-const CurrentQuestion = (props) => {
+const QuestionCard = (props) => {
   const { question, currentIndex, setCurrentIndex, score, setScore } = props;
 
-  const decodedQuestion = he.decode(question.question);
-  const correctAnswer = he.decode(question.correct_answer);
-  const incorrectAnswers = question.incorrect_answers.map((answer) => {
-    return he.decode(answer);
-  });
-  const answers = [correctAnswer, ...incorrectAnswers];
+  const questionObj = decodeQuestionObj(question);
+  const answers = [questionObj.correctAnswer, ...questionObj.incorrectAnswers];
   const shuffledAnswers = shuffleArr(answers);
 
   const handleClickAnswer = (e) => {
-    if (e.target.innerText === correctAnswer.toUpperCase()) {
+    if (e.target.innerText === questionObj.correctAnswer.toUpperCase()) {
       setScore(score + 1);
     }
     setCurrentIndex(currentIndex + 1);
@@ -32,7 +28,7 @@ const CurrentQuestion = (props) => {
       <Card sx={{ width: "60%" }} variant="outlined">
         <CardContent>
           <Typography variant="h5" component="div">
-            {decodedQuestion}
+            {questionObj.question}
           </Typography>
         </CardContent>
         <CardActions>
@@ -73,7 +69,7 @@ const CurrentQuestion = (props) => {
   );
 };
 
-CurrentQuestion.propTypes = {
+QuestionCard.propTypes = {
   question: PropTypes.object,
   currentIndex: PropTypes.number,
   setCurrentIndex: PropTypes.func,
@@ -81,4 +77,4 @@ CurrentQuestion.propTypes = {
   setScore: PropTypes.func,
 };
 
-export default CurrentQuestion;
+export default QuestionCard;

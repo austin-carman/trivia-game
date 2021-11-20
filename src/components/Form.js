@@ -44,7 +44,6 @@ const Form = () => {
 
   return (
     <div>
-      <h2>Form</h2>
       <FormControl required sx={{ m: 1, minWidth: 200 }}>
         <InputLabel id="question-category-label">Category</InputLabel>
         <Select
@@ -66,7 +65,6 @@ const Form = () => {
         </Select>
         <FormHelperText>Required</FormHelperText>
       </FormControl>
-
       <FormControl component="fieldset">
         <RadioGroup
           row

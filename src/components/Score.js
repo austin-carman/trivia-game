@@ -14,7 +14,7 @@ const Score = (props) => {
 
   return (
     <div>
-      <h3>Previous High Score: {highScore}</h3>
+      <h3>Previous High Score: {highScore || 0} / 20</h3>
     </div>
   );
 };

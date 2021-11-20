@@ -14,6 +14,13 @@ const QuestionsList = (props) => {
     index++;
   }
 
+  /*
+  state for answered(false)
+  useEffect? when state ^ is true (add 1 to the index, set state to false)
+  pass questions[index] to Question component
+  when user clicks an answer, set questionAnswered state to true
+  */
+
   return (
     <div>
       <h2>Questions List Comp</h2>

@@ -7,15 +7,15 @@ import {
   Button,
 } from "@mui/material";
 import { shuffleArr } from "../helperFunctions/helperFunctions";
-import he from "he";
+import { decodeHTMLEntities } from "../helperFunctions/helperFunctions";
 
 const QuestionCard = (props) => {
   const { question, currentIndex, setCurrentIndex, score, setScore } = props;
 
-  const decodedQuestion = he.decode(question.question);
-  const correctAnswer = he.decode(question.correct_answer);
+  const currentQuestion = decodeHTMLEntities(question.question);
+  const correctAnswer = decodeHTMLEntities(question.correct_answer);
   const incorrectAnswers = question.incorrect_answers.map((answer) => {
-    return he.decode(answer);
+    return decodeHTMLEntities(answer);
   });
   const answers = [correctAnswer, ...incorrectAnswers];
   const shuffledAnswers = shuffleArr(answers);
@@ -32,7 +32,7 @@ const QuestionCard = (props) => {
       <Card sx={{ width: "60%" }} variant="outlined">
         <CardContent>
           <Typography variant="h5" component="div">
-            {decodedQuestion}
+            {currentQuestion}
           </Typography>
         </CardContent>
         <CardActions>

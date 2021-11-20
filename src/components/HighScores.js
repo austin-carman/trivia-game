@@ -1,5 +1,6 @@
 import { Button, Modal, Box, Typography } from "@mui/material";
 import { useState } from "react";
+import { getHighScores } from "../helperFunctions/helperFunctions";
 
 const style = {
   position: "absolute",
@@ -15,6 +16,20 @@ const style = {
 
 const HighScores = () => {
   const [open, setOpen] = useState(false);
+
+  const categories = [
+    "General Knowledge",
+    "Entertainment: Film",
+    "Entertainment: Music",
+    "Entertainment: Television",
+    "Geography",
+    "History",
+    "Science and Nature",
+    "Sports",
+  ];
+
+  const allHighScores = getHighScores(categories);
+  console.log(allHighScores);
 
   const handleOpen = () => {
     setOpen(true);

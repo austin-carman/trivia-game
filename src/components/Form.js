@@ -57,7 +57,7 @@ const Form = () => {
           <MenuItem value={"9"}>General Knowledge</MenuItem>
           <MenuItem value={"11"}>Entertainment: Film</MenuItem>
           <MenuItem value={"12"}>Entertainment: Music</MenuItem>
-          <MenuItem value={"14"}>Entertainment: TV</MenuItem>
+          <MenuItem value={"14"}>Entertainment: Television</MenuItem>
           <MenuItem value={"22"}>Geography</MenuItem>
           <MenuItem value={"23"}>History</MenuItem>
           <MenuItem value={"17"}>Science and Nature</MenuItem>

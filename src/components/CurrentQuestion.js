@@ -14,6 +14,9 @@ const CurrentQuestion = (props) => {
     setCurrentIndex(currentIndex + 1);
   };
 
+  const correctAnswer = question.correct_answer;
+  const incorrectAnswers = question.incorrect_answers;
+  const answers = [correctAnswer, ...incorrectAnswers];
   console.log(question);
 
   return (
@@ -23,15 +26,23 @@ const CurrentQuestion = (props) => {
           <Typography variant="h5" component="div">
             {question.question}
           </Typography>
-          <Button variant="outlined" size="small">
-            {question.correct_answer}
-          </Button>
         </CardContent>
         <CardActions>
-          <Button size="small">Learn More</Button>
+          {answers.map((answer, index) => {
+            return (
+              <Button
+                variant="outlined"
+                size="small"
+                key={index}
+                onClick={handleClickAnswer}
+              >
+                {answer}
+              </Button>
+            );
+          })}
         </CardActions>
+        ;
       </Card>
-      <button onClick={handleClickAnswer}>Answer</button>
     </div>
   );
 };

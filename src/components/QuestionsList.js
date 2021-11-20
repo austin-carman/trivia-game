@@ -16,7 +16,7 @@ const QuestionsList = (props) => {
 
   return (
     <div>
-      <h2>{score}</h2>
+      <h2>Current Score: {score}</h2>
       {currentIndex < questions.length ? (
         <QuestionCard
           question={questions[currentIndex]}

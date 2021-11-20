@@ -22,7 +22,6 @@ const QuestionsList = (props) => {
           question={questions[currentIndex]}
           currentIndex={currentIndex}
           setCurrentIndex={setCurrentIndex}
-          numberOfQuestions={questions.length}
           score={score}
           setScore={setScore}
         />

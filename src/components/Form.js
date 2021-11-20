@@ -66,7 +66,6 @@ const Form = () => {
         </Select>
         <FormHelperText>Required</FormHelperText>
       </FormControl>
-
       <FormControl component="fieldset">
         <RadioGroup
           row

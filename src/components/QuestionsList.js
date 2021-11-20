@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
-import CurrentQuestion from "./CurrentQuestion";
+import QuestionCard from "./QuestionCard";
 import Score from "./Score";
 
 const QuestionsList = (props) => {
@@ -18,7 +18,7 @@ const QuestionsList = (props) => {
     <div>
       <h2>{score}</h2>
       {currentIndex < questions.length ? (
-        <CurrentQuestion
+        <QuestionCard
           question={questions[currentIndex]}
           currentIndex={currentIndex}
           setCurrentIndex={setCurrentIndex}

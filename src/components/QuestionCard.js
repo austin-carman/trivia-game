@@ -9,7 +9,7 @@ import {
 import { shuffleArr } from "../helperFunctions/helperFunctions";
 import he from "he";
 
-const CurrentQuestion = (props) => {
+const QuestionCard = (props) => {
   const { question, currentIndex, setCurrentIndex, score, setScore } = props;
 
   const decodedQuestion = he.decode(question.question);
@@ -73,7 +73,7 @@ const CurrentQuestion = (props) => {
   );
 };
 
-CurrentQuestion.propTypes = {
+QuestionCard.propTypes = {
   question: PropTypes.object,
   currentIndex: PropTypes.number,
   setCurrentIndex: PropTypes.func,
@@ -81,4 +81,4 @@ CurrentQuestion.propTypes = {
   setScore: PropTypes.func,
 };
 
-export default CurrentQuestion;
+export default QuestionCard;

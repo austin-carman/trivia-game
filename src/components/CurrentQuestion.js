@@ -26,8 +26,6 @@ const CurrentQuestion = (props) => {
   });
   const shuffledAnswers = shuffleArr(decodedAnswers);
 
-  console.log(question);
-
   return (
     <div>
       <Card sx={{ width: "60%" }} variant="outlined">

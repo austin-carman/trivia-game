@@ -13,7 +13,6 @@ const CurrentQuestion = (props) => {
   const { question, currentIndex, setCurrentIndex, score, setScore } = props;
 
   const decodedQuestion = he.decode(question.question);
-
   const correctAnswer = he.decode(question.correct_answer);
   const incorrectAnswers = question.incorrect_answers.map((answer) => {
     return he.decode(answer);

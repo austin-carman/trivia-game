@@ -11,6 +11,7 @@ const QuestionsList = (props) => {
 
   useEffect(() => {
     setCurrentIndex(0);
+    setScore(0);
   }, [questions]);
 
   return (
@@ -25,7 +26,7 @@ const QuestionsList = (props) => {
           setScore={setScore}
         />
       ) : (
-        <Score />
+        <Score score={score} category={questions[0].category} />
       )}
     </div>
   );

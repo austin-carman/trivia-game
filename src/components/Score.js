@@ -1,14 +1,10 @@
 import PropTypes from "prop-types";
+import { saveHighScore } from "../helperFunctions/helperFunctions";
 
 const Score = (props) => {
   const { score, category } = props;
 
-  const highScore = localStorage.getItem(`${category} high score`);
-  if (!highScore) {
-    localStorage.setItem(`${category} high score`, score);
-  } else if (score > highScore) {
-    localStorage.setItem(`${category} high score`, score);
-  }
+  const highScore = saveHighScore(score, category);
 
   return (
     <div>

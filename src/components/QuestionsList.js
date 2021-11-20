@@ -5,26 +5,18 @@ import CurrentQuestion from "./CurrentQuestion";
 const QuestionsList = (props) => {
   const { questions } = props;
 
-  const [answered, setAnswered] = useState(false);
-
-  let index = 0;
-
-  if (answered === true) {
-    setAnswered(false);
-    index++;
-  }
-
-  /*
-  state for answered(false)
-  useEffect? when state ^ is true (add 1 to the index, set state to false)
-  pass questions[index] to Question component
-  when user clicks an answer, set questionAnswered state to true
-  */
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
     <div>
       <h2>Questions List Comp</h2>
-      <CurrentQuestion question={questions[index]} setAnswered={setAnswered} />
+      {currentIndex < questions.length && (
+        <CurrentQuestion
+          question={questions[currentIndex]}
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+        />
+      )}
     </div>
   );
 };

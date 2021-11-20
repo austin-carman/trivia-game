@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CurrentQuestion from "./CurrentQuestion";
 import Score from "./Score";
 
@@ -7,6 +7,10 @@ const QuestionsList = (props) => {
   const { questions } = props;
 
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [questions]);
 
   return (
     <div>

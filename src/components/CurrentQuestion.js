@@ -8,13 +8,9 @@ import {
 } from "@mui/material";
 import { shuffleArr } from "../helperFunctions/helperFunctions";
 import he from "he";
-import Score from "./Score";
-import { useState } from "react";
 
 const CurrentQuestion = (props) => {
-  const { question, currentIndex, setCurrentIndex } = props;
-
-  const [score, setScore] = useState(0);
+  const { question, currentIndex, setCurrentIndex, score, setScore } = props;
 
   const decodedQuestion = he.decode(question.question);
   const correctAnswer = he.decode(question.correct_answer);
@@ -25,15 +21,14 @@ const CurrentQuestion = (props) => {
   const shuffledAnswers = shuffleArr(answers);
 
   const handleClickAnswer = (e) => {
-    setCurrentIndex(currentIndex + 1);
     if (e.target.innerText === correctAnswer.toUpperCase()) {
       setScore(score + 1);
     }
+    setCurrentIndex(currentIndex + 1);
   };
 
   return (
     <div>
-      <h2>{score}</h2>
       <Card sx={{ width: "60%" }} variant="outlined">
         <CardContent>
           <Typography variant="h5" component="div">
@@ -74,11 +69,6 @@ const CurrentQuestion = (props) => {
           )}
         </CardActions>
       </Card>
-      <Score
-        score={score}
-        category={question.category}
-        setCurrentIndex={setCurrentIndex}
-      />
     </div>
   );
 };
@@ -87,6 +77,8 @@ CurrentQuestion.propTypes = {
   question: PropTypes.object,
   currentIndex: PropTypes.number,
   setCurrentIndex: PropTypes.func,
+  score: PropTypes.number,
+  setScore: PropTypes.func,
 };
 
 export default CurrentQuestion;

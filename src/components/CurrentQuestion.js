@@ -6,6 +6,7 @@ import {
   CardActions,
   Button,
 } from "@mui/material";
+import { shuffleArr } from "../helperFunctions/helperFunctions";
 
 const CurrentQuestion = (props) => {
   const { question, currentIndex, setCurrentIndex } = props;
@@ -17,6 +18,9 @@ const CurrentQuestion = (props) => {
   const correctAnswer = question.correct_answer;
   const incorrectAnswers = question.incorrect_answers;
   const answers = [correctAnswer, ...incorrectAnswers];
+  const shuffledAnswers = shuffleArr(answers);
+
+  console.log(answers);
 
   return (
     <div>
@@ -27,7 +31,7 @@ const CurrentQuestion = (props) => {
           </Typography>
         </CardContent>
         <CardActions>
-          {answers.map((answer, index) => {
+          {shuffledAnswers.map((answer, index) => {
             return (
               <Button
                 variant="outlined"

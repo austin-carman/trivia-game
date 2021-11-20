@@ -7,6 +7,7 @@ import {
   Button,
 } from "@mui/material";
 import { shuffleArr } from "../helperFunctions/helperFunctions";
+import he from "he";
 
 const CurrentQuestion = (props) => {
   const { question, currentIndex, setCurrentIndex } = props;
@@ -15,17 +16,24 @@ const CurrentQuestion = (props) => {
     setCurrentIndex(currentIndex + 1);
   };
 
+  const decodedQuestion = he.decode(question.question);
+
   const correctAnswer = question.correct_answer;
   const incorrectAnswers = question.incorrect_answers;
   const answers = [correctAnswer, ...incorrectAnswers];
-  const shuffledAnswers = shuffleArr(answers);
+  const decodedAnswers = answers.map((answer) => {
+    return he.decode(answer);
+  });
+  const shuffledAnswers = shuffleArr(decodedAnswers);
+
+  console.log(question);
 
   return (
     <div>
       <Card sx={{ minWidth: 100 }} variant="outlined">
         <CardContent>
           <Typography variant="h5" component="div">
-            {question.question}
+            {decodedQuestion}
           </Typography>
         </CardContent>
         <CardActions>

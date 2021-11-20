@@ -1,4 +1,11 @@
 import PropTypes from "prop-types";
+import {
+  Card,
+  CardContent,
+  Typography,
+  CardActions,
+  Button,
+} from "@mui/material";
 
 const CurrentQuestion = (props) => {
   const { question, currentIndex, setCurrentIndex } = props;
@@ -7,10 +14,23 @@ const CurrentQuestion = (props) => {
     setCurrentIndex(currentIndex + 1);
   };
 
+  console.log(question);
+
   return (
     <div>
-      <h2>Current Question Component</h2>
-      <p>{question.question}</p>
+      <Card sx={{ minWidth: 275 }}>
+        <CardContent>
+          <Typography variant="h5" component="div">
+            {question.question}
+          </Typography>
+          <Button variant="outlined" size="small">
+            {question.correct_answer}
+          </Button>
+        </CardContent>
+        <CardActions>
+          <Button size="small">Learn More</Button>
+        </CardActions>
+      </Card>
       <button onClick={handleClickAnswer}>Answer</button>
     </div>
   );

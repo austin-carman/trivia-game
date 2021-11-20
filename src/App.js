@@ -1,4 +1,5 @@
 import Form from "./components/Form";
+import HighScores from "./components/HighScores";
 
 function App() {
   return (
@@ -6,6 +7,7 @@ function App() {
       <header className="App-header">
         <h1>Trivia</h1>
         <Form />
+        <HighScores />
       </header>
     </div>
   );

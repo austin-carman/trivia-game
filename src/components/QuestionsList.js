@@ -7,6 +7,7 @@ const QuestionsList = (props) => {
   const { questions } = props;
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     setCurrentIndex(0);
@@ -14,12 +15,14 @@ const QuestionsList = (props) => {
 
   return (
     <div>
-      <h2>Questions List Comp</h2>
+      <h2>{score}</h2>
       {currentIndex < questions.length ? (
         <CurrentQuestion
           question={questions[currentIndex]}
           currentIndex={currentIndex}
           setCurrentIndex={setCurrentIndex}
+          score={score}
+          setScore={setScore}
         />
       ) : (
         <Score />

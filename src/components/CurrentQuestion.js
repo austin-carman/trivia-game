@@ -10,21 +10,23 @@ import { shuffleArr } from "../helperFunctions/helperFunctions";
 import he from "he";
 
 const CurrentQuestion = (props) => {
-  const { question, currentIndex, setCurrentIndex } = props;
-
-  const handleClickAnswer = () => {
-    setCurrentIndex(currentIndex + 1);
-  };
+  const { question, currentIndex, setCurrentIndex, score, setScore } = props;
 
   const decodedQuestion = he.decode(question.question);
 
-  const correctAnswer = question.correct_answer;
-  const incorrectAnswers = question.incorrect_answers;
-  const answers = [correctAnswer, ...incorrectAnswers];
-  const decodedAnswers = answers.map((answer) => {
+  const correctAnswer = he.decode(question.correct_answer);
+  const incorrectAnswers = question.incorrect_answers.map((answer) => {
     return he.decode(answer);
   });
-  const shuffledAnswers = shuffleArr(decodedAnswers);
+  const answers = [correctAnswer, ...incorrectAnswers];
+  const shuffledAnswers = shuffleArr(answers);
+
+  const handleClickAnswer = (e) => {
+    setCurrentIndex(currentIndex + 1);
+    if (e.target.innerText === correctAnswer.toUpperCase()) {
+      setScore(score + 1);
+    }
+  };
 
   return (
     <div>
@@ -76,6 +78,8 @@ CurrentQuestion.propTypes = {
   question: PropTypes.object,
   currentIndex: PropTypes.number,
   setCurrentIndex: PropTypes.func,
+  score: PropTypes.number,
+  setScore: PropTypes.func,
 };
 
 export default CurrentQuestion;

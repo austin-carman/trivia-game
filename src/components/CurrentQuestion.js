@@ -17,11 +17,10 @@ const CurrentQuestion = (props) => {
   const correctAnswer = question.correct_answer;
   const incorrectAnswers = question.incorrect_answers;
   const answers = [correctAnswer, ...incorrectAnswers];
-  console.log(question);
 
   return (
     <div>
-      <Card sx={{ minWidth: 275 }}>
+      <Card sx={{ minWidth: 100 }} variant="outlined">
         <CardContent>
           <Typography variant="h5" component="div">
             {question.question}
@@ -41,7 +40,6 @@ const CurrentQuestion = (props) => {
             );
           })}
         </CardActions>
-        ;
       </Card>
     </div>
   );

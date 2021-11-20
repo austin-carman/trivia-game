@@ -36,7 +36,6 @@ const Form = () => {
       )
       .then((res) => {
         setQuestions(res.data.results);
-        setFormValues(initialFormValues);
       })
       .catch((err) => {
         console.log(err);

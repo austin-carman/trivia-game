@@ -5,3 +5,13 @@ export const shuffleArr = (arr) => {
   }
   return arr;
 };
+
+export const saveHighScore = (score, category) => {
+  const highScore = localStorage.getItem(`${category} high score`);
+  if (!highScore) {
+    localStorage.setItem(`${category} high score`, score);
+  } else if (score > highScore) {
+    localStorage.setItem(`${category} high score`, score);
+  }
+  return highScore;
+};

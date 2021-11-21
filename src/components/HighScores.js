@@ -28,8 +28,7 @@ const HighScores = () => {
     "Sports",
   ];
 
-  const allHighScores = getHighScores(categories);
-  console.log(allHighScores);
+  const highScoresList = getHighScores(categories);
 
   const handleOpen = () => {
     setOpen(true);
@@ -50,10 +49,12 @@ const HighScores = () => {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+            High Scores:
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            {highScoresList.map((categoryScore, index) => {
+              return <li key={index}>{categoryScore}</li>;
+            })}
           </Typography>
         </Box>
       </Modal>

@@ -9,11 +9,16 @@ export const shuffleArr = (arr) => {
 };
 
 export const getHighScores = (categories) => {
-  const highScores = {};
+  const highScoresObj = {};
+  const highScoresList = [];
   categories.map((category) => {
-    highScores[category] = localStorage.getItem(category);
+    highScoresObj[category] = localStorage.getItem(category);
   });
-  return highScores;
+
+  for (const key in highScoresObj) {
+    highScoresList.push(`${key}: ${highScoresObj[key] || 0}`);
+  }
+  return highScoresList;
 };
 
 export const saveHighScore = (score, category) => {

@@ -8,12 +8,25 @@ export const shuffleArr = (arr) => {
   return arr;
 };
 
+export const getHighScores = (categories) => {
+  const highScoresObj = {};
+  const highScoresList = [];
+  categories.map((category) => {
+    highScoresObj[category] = localStorage.getItem(category);
+  });
+
+  for (const key in highScoresObj) {
+    highScoresList.push(`${key}: ${highScoresObj[key] || 0}`);
+  }
+  return highScoresList;
+};
+
 export const saveHighScore = (score, category) => {
-  const highScore = localStorage.getItem(`${category} high score`);
+  const highScore = localStorage.getItem(category);
   if (!highScore) {
-    localStorage.setItem(`${category} high score`, score);
+    localStorage.setItem(category, score);
   } else if (score > highScore) {
-    localStorage.setItem(`${category} high score`, score);
+    localStorage.setItem(category, score);
   }
   return highScore;
 };

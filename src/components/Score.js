@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { saveHighScore } from "../helperFunctions/helperFunctions";
 import { useEffect, useState } from "react";
+import { Snackbar, Alert } from "@mui/material";
 
 const Score = (props) => {
   const { score, category } = props;
@@ -14,7 +15,12 @@ const Score = (props) => {
 
   return (
     <div>
-      <h3>Previous High Score: {highScore}</h3>
+      <h3>Previous High Score: {highScore || 0} / 20</h3>
+      <Snackbar open={score > highScore} autoHideDuration={6000}>
+        <Alert severity="success" sx={{ width: "100%" }}>
+          Congratulations! New high score in {category}!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

@@ -6,8 +6,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Trivia</h1>
-        <Form />
         <HighScores />
+        <Form />
       </header>
     </div>
   );

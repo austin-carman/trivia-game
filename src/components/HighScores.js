@@ -40,7 +40,7 @@ const HighScores = () => {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>View high scores</Button>
       <Modal
         open={open}
         onClose={handleClose}

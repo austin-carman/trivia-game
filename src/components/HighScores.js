@@ -24,7 +24,7 @@ const HighScores = () => {
     "Entertainment: Television",
     "Geography",
     "History",
-    "Science and Nature",
+    "Science & Nature",
     "Sports",
   ];
 

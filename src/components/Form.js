@@ -6,12 +6,32 @@ import {
   Select,
   MenuItem,
   InputLabel,
-  FormHelperText,
   RadioGroup,
   FormControlLabel,
   Radio,
   Button,
 } from "@mui/material";
+import styled from "styled-components";
+
+const StyledForm = styled.div`
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  margin: 3% auto;
+
+  .category-dropdown {
+    color: red;
+  }
+
+  fieldset {
+    margin: auto;
+  }
+
+  button {
+    width: 50%;
+    margin: 5% auto;
+  }
+`;
 
 const Form = () => {
   const initialFormValues = {
@@ -44,57 +64,56 @@ const Form = () => {
 
   return (
     <div>
-      <FormControl required sx={{ m: 1, minWidth: 200 }}>
-        <InputLabel id="question-category-label">Category</InputLabel>
-        <Select
-          labelId="question-category-label"
-          id="question-category"
-          value={formValues.category}
-          onChange={handleChange}
-          label="Category *"
-          name="category"
+      <StyledForm>
+        <FormControl className="category-dropdown" sx={{ m: 1, minWidth: 200 }}>
+          <InputLabel id="question-category-label">Category</InputLabel>
+          <Select
+            labelId="question-category-label"
+            id="question-category"
+            value={formValues.category}
+            onChange={handleChange}
+            label="Category"
+            name="category"
+          >
+            <MenuItem value={"9"}>General Knowledge</MenuItem>
+            <MenuItem value={"11"}>Entertainment: Film</MenuItem>
+            <MenuItem value={"12"}>Entertainment: Music</MenuItem>
+            <MenuItem value={"14"}>Entertainment: Television</MenuItem>
+            <MenuItem value={"22"}>Geography</MenuItem>
+            <MenuItem value={"23"}>History</MenuItem>
+            <MenuItem value={"17"}>Science and Nature</MenuItem>
+            <MenuItem value={"21"}>Sports</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl component="fieldset">
+          <RadioGroup
+            row
+            aria-label="difficulty"
+            name="difficulty"
+            defaultValue="easy"
+            value={formValues.difficulty}
+            onChange={handleChange}
+          >
+            <FormControlLabel
+              value="easy"
+              control={<Radio />}
+              label="Beginner"
+            />
+            <FormControlLabel
+              value="medium"
+              control={<Radio />}
+              label="Expert"
+            />
+          </RadioGroup>
+        </FormControl>
+        <Button
+          variant="contained"
+          disabled={disabled}
+          onClick={handleButtonClick}
         >
-          <MenuItem value={"9"}>General Knowledge</MenuItem>
-          <MenuItem value={"11"}>Entertainment: Film</MenuItem>
-          <MenuItem value={"12"}>Entertainment: Music</MenuItem>
-          <MenuItem value={"14"}>Entertainment: Television</MenuItem>
-          <MenuItem value={"22"}>Geography</MenuItem>
-          <MenuItem value={"23"}>History</MenuItem>
-          <MenuItem value={"17"}>Science and Nature</MenuItem>
-          <MenuItem value={"21"}>Sports</MenuItem>
-        </Select>
-        <FormHelperText>Required</FormHelperText>
-      </FormControl>
-      <FormControl component="fieldset">
-        <RadioGroup
-          row
-          aria-label="difficulty"
-          name="difficulty"
-          defaultValue="easy"
-          value={formValues.difficulty}
-          onChange={handleChange}
-        >
-          <FormControlLabel
-            value="easy"
-            control={<Radio />}
-            label="Beginner"
-            labelPlacement="bottom"
-          />
-          <FormControlLabel
-            value="medium"
-            control={<Radio />}
-            label="Expert"
-            labelPlacement="bottom"
-          />
-        </RadioGroup>
-      </FormControl>
-      <Button
-        variant="contained"
-        disabled={disabled}
-        onClick={handleButtonClick}
-      >
-        Start
-      </Button>
+          Start
+        </Button>
+      </StyledForm>
       {questions.length > 0 && <QuestionsList questions={questions} />}
     </div>
   );

@@ -1,7 +1,6 @@
-import { Button, Modal, Box, Typography } from "@mui/material";
-import { useState } from "react";
+import { Modal, Box, Typography } from "@mui/material";
 import { getHighScores } from "../helperFunctions/helperFunctions";
-
+import PropTypes from "prop-types";
 const style = {
   position: "absolute",
   top: "50%",
@@ -14,8 +13,8 @@ const style = {
   p: 4,
 };
 
-const HighScores = () => {
-  const [open, setOpen] = useState(false);
+const HighScores = (props) => {
+  const { viewHighScores, setViewHighScores } = props;
 
   const categories = [
     "General Knowledge",
@@ -30,19 +29,15 @@ const HighScores = () => {
 
   const highScoresList = getHighScores(categories);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
   const handleClose = () => {
-    setOpen(false);
+    // setOpen(false);
+    setViewHighScores(false);
   };
 
   return (
     <div>
-      <Button onClick={handleOpen}>View high scores</Button>
       <Modal
-        open={open}
+        open={viewHighScores}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
@@ -60,6 +55,11 @@ const HighScores = () => {
       </Modal>
     </div>
   );
+};
+
+HighScores.propTypes = {
+  viewHighScores: PropTypes.bool,
+  setViewHighScores: PropTypes.func,
 };
 
 export default HighScores;

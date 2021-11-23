@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import QuestionsList from "./QuestionsList";
+import HighScores from "./HighScores";
 import {
   FormControl,
   Select,
@@ -11,29 +12,31 @@ import {
   Radio,
   Button,
 } from "@mui/material";
-import styled from "styled-components";
+import useStyles from "../styles/StyleSheet";
+// import styled from "styled-components";
 
-const StyledForm = styled.div`
-  width: 25%;
-  display: flex;
-  flex-direction: column;
-  margin: 3% auto;
+// const StyledForm = styled.div`
+//   width: 25%;
+//   display: flex;
+//   flex-direction: column;
+//   margin: 3% auto;
 
-  .category-dropdown {
-    color: red;
-  }
+//   .category-dropdown {
+//     color: red;
+//   }
 
-  fieldset {
-    margin: auto;
-  }
+//   fieldset {
+//     margin: auto;
+//   }
 
-  button {
-    width: 50%;
-    margin: 5% auto;
-  }
-`;
+//   button {
+//     width: 50%;
+//     margin: 5% auto;
+//   }
+// `;
 
 const Form = () => {
+  const styles = useStyles();
   const initialFormValues = {
     category: "",
     difficulty: "easy",
@@ -42,6 +45,7 @@ const Form = () => {
   const [formValues, setFormValues] = useState(initialFormValues);
   const [disabled, setDisabled] = useState(true);
   const [questions, setQuestions] = useState([]);
+  const [viewHighScores, setViewHighScores] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -64,8 +68,8 @@ const Form = () => {
 
   return (
     <div>
-      <StyledForm>
-        <FormControl className="category-dropdown" sx={{ m: 1, minWidth: 200 }}>
+      <div className={styles.formContainer}>
+        <FormControl className="categoryDropdown" sx={{ m: 1, minWidth: 200 }}>
           <InputLabel id="question-category-label">Category</InputLabel>
           <Select
             labelId="question-category-label"
@@ -85,7 +89,7 @@ const Form = () => {
             <MenuItem value={"21"}>Sports</MenuItem>
           </Select>
         </FormControl>
-        <FormControl component="fieldset">
+        <FormControl component="fieldset" className={styles.radioButtons}>
           <RadioGroup
             row
             aria-label="difficulty"
@@ -110,10 +114,24 @@ const Form = () => {
           variant="contained"
           disabled={disabled}
           onClick={handleButtonClick}
+          className={styles.startButton}
         >
           Start
         </Button>
-      </StyledForm>
+        <Button
+          variant="contained"
+          onClick={() => setViewHighScores(true)}
+          className={styles.startButton}
+        >
+          View High Scores
+        </Button>
+      </div>
+      {viewHighScores && (
+        <HighScores
+          viewHighScores={viewHighScores}
+          setViewHighScores={setViewHighScores}
+        />
+      )}
       {questions.length > 0 && <QuestionsList questions={questions} />}
     </div>
   );

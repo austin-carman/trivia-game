@@ -8,40 +8,12 @@ import {
 } from "@mui/material";
 import { shuffleArr } from "../helperFunctions/helperFunctions";
 import { decodeQuestionObj } from "../helperFunctions/helperFunctions";
-import styled from "styled-components";
-
-const StyledCard = styled.div`
-  width: 50%;
-  margin: 3% auto;
-  text-align: center;
-  border: 1px solid #2196f3;
-
-  .question {
-    margin: 5% auto;
-  }
-
-  .answer-buttons {
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 auto 5%;
-    height: 10vh;
-    width: 75%;
-  }
-
-  .true-false-answer {
-    margin: 5%;
-  }
-
-  button {
-    padding: 1%;
-  }
-`;
+import useStyles from "../styles/StyleSheet";
 
 const QuestionCard = (props) => {
   const { question, currentIndex, setCurrentIndex, score, setScore } = props;
 
+  const styles = useStyles();
   const questionObj = decodeQuestionObj(question);
   const answers = [questionObj.correctAnswer, ...questionObj.incorrectAnswers];
   const shuffledAnswers = shuffleArr(answers);
@@ -54,18 +26,18 @@ const QuestionCard = (props) => {
   };
 
   return (
-    <StyledCard>
-      <Card variant="outlined">
+    <div>
+      <Card className={styles.questionCard}>
         <CardContent>
-          <Typography className="question" variant="h5" component="div">
+          <Typography className={styles.question} variant="h5" component="div">
             {questionObj.question}
           </Typography>
         </CardContent>
-        <CardActions className="answer-buttons">
+        <CardActions className={styles.answerButtons}>
           {question.type === "boolean" ? (
             <div>
               <Button
-                className="true-false-answer"
+                className={styles.trueFalseAnswers}
                 variant="outlined"
                 size="small"
                 onClick={handleClickAnswer}
@@ -73,7 +45,7 @@ const QuestionCard = (props) => {
                 True
               </Button>
               <Button
-                className="true-false-answer"
+                className={styles.trueFalseAnswers}
                 variant="outlined"
                 size="small"
                 onClick={handleClickAnswer}
@@ -85,7 +57,6 @@ const QuestionCard = (props) => {
             shuffledAnswers.map((answer, index) => {
               return (
                 <Button
-                  className="multiple-choice-answers"
                   variant="outlined"
                   size="small"
                   key={index}
@@ -98,7 +69,7 @@ const QuestionCard = (props) => {
           )}
         </CardActions>
       </Card>
-    </StyledCard>
+    </div>
   );
 };
 

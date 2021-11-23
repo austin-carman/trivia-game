@@ -5,7 +5,7 @@ import { Snackbar, Alert } from "@mui/material";
 import styled from "styled-components";
 
 const StyledScore = styled.div`
-  color: #2196f3;
+  color: #2076d2;
   width: 50%;
   margin: auto;
 

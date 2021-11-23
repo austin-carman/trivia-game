@@ -12,31 +12,29 @@ import {
   Radio,
   Button,
 } from "@mui/material";
-import useStyles from "../styles/StyleSheet";
-// import styled from "styled-components";
+import styled from "styled-components";
 
-// const StyledForm = styled.div`
-//   width: 25%;
-//   display: flex;
-//   flex-direction: column;
-//   margin: 3% auto;
+const StyledForm = styled.div`
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  margin: 3% auto;
 
-//   .category-dropdown {
-//     color: red;
-//   }
+  .category-dropdown {
+    color: red;
+  }
 
-//   fieldset {
-//     margin: auto;
-//   }
+  .radio-buttons {
+    margin: 3% auto;
+  }
 
-//   button {
-//     width: 50%;
-//     margin: 5% auto;
-//   }
-// `;
+  .form-buttons {
+    width: 75%;
+    margin: 3% auto;
+  }
+`;
 
 const Form = () => {
-  const styles = useStyles();
   const initialFormValues = {
     category: "",
     difficulty: "easy",
@@ -68,8 +66,8 @@ const Form = () => {
 
   return (
     <div>
-      <div className={styles.formContainer}>
-        <FormControl className="categoryDropdown" sx={{ m: 1, minWidth: 200 }}>
+      <StyledForm>
+        <FormControl className="category-dropdown" sx={{ m: 1, minWidth: 200 }}>
           <InputLabel id="question-category-label">Category</InputLabel>
           <Select
             labelId="question-category-label"
@@ -89,7 +87,7 @@ const Form = () => {
             <MenuItem value={"21"}>Sports</MenuItem>
           </Select>
         </FormControl>
-        <FormControl component="fieldset" className={styles.radioButtons}>
+        <FormControl component="fieldset" className="radio-buttons">
           <RadioGroup
             row
             aria-label="difficulty"
@@ -114,18 +112,18 @@ const Form = () => {
           variant="contained"
           disabled={disabled}
           onClick={handleButtonClick}
-          className={styles.startButton}
+          className="form-buttons"
         >
           Start
         </Button>
         <Button
           variant="contained"
           onClick={() => setViewHighScores(true)}
-          className={styles.startButton}
+          className="form-buttons"
         >
           View High Scores
         </Button>
-      </div>
+      </StyledForm>
       {viewHighScores && (
         <HighScores
           viewHighScores={viewHighScores}

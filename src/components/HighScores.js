@@ -51,7 +51,7 @@ const HighScores = (props) => {
   };
 
   const handleReset = (e) => {
-    console.log(e.target);
+    localStorage.removeItem(categories[e.target.id]);
   };
 
   return (
@@ -75,7 +75,9 @@ const HighScores = (props) => {
                 return (
                   <div className="high-score-category" key={index}>
                     <li>{categoryScore}</li>
-                    <Button onClick={(e) => handleReset(e)}>Reset</Button>
+                    <Button id={index} onClick={handleReset}>
+                      Reset
+                    </Button>
                   </div>
                 );
               })}

@@ -75,9 +75,7 @@ const HighScores = (props) => {
                 return (
                   <div className="high-score-category" key={index}>
                     <li>{categoryScore}</li>
-                    <Button variant="outlined" onClick={(e) => handleReset(e)}>
-                      Reset
-                    </Button>
+                    <Button onClick={(e) => handleReset(e)}>Reset</Button>
                   </div>
                 );
               })}

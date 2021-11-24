@@ -1,6 +1,18 @@
-import { Modal, Box, Typography } from "@mui/material";
+import { Modal, Box, Typography, Button } from "@mui/material";
 import { getHighScores } from "../helperFunctions/helperFunctions";
 import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const StyledModal = styled.div`
+  color: #2076d2;
+
+  .high-score-category {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+`;
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -30,8 +42,11 @@ const HighScores = (props) => {
   const highScoresList = getHighScores(categories);
 
   const handleClose = () => {
-    // setOpen(false);
     setViewHighScores(false);
+  };
+
+  const handleReset = (e) => {
+    console.log(e.target);
   };
 
   return (
@@ -43,14 +58,24 @@ const HighScores = (props) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            High Scores:
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {highScoresList.map((categoryScore, index) => {
-              return <li key={index}>{categoryScore}</li>;
-            })}
-          </Typography>
+          <StyledModal>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              High Scores:
+            </Typography>
+            <Button variant="outlined">Reset All</Button>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              {highScoresList.map((categoryScore, index) => {
+                return (
+                  <div className="high-score-category" key={index}>
+                    <li>{categoryScore}</li>
+                    <Button variant="outlined" onClick={(e) => handleReset(e)}>
+                      Reset
+                    </Button>
+                  </div>
+                );
+              })}
+            </Typography>
+          </StyledModal>
         </Box>
       </Modal>
     </div>

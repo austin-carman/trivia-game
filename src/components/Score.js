@@ -27,7 +27,7 @@ const Score = (props) => {
   return (
     <StyledScore>
       <h2>Score: {score} / 20</h2>
-      <h2>High Score: {highScore || 0} / 20</h2>
+      <h2>Previous High Score: {highScore || 0} / 20</h2>
       <Snackbar open={score > highScore} autoHideDuration={6000}>
         <Alert severity="success" sx={{ width: "100%" }}>
           Congratulations! New high score in {category}!

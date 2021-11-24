@@ -11,6 +11,11 @@ const StyledModal = styled.div`
     flex-flow: row wrap;
     justify-content: space-between;
   }
+
+  .modal-title {
+    display: flex;
+    justify-content: space-between;
+  }
 `;
 
 const style = {
@@ -59,10 +64,12 @@ const HighScores = (props) => {
       >
         <Box sx={style}>
           <StyledModal>
-            <Typography id="modal-modal-title" variant="h6" component="h2">
-              High Scores:
-            </Typography>
-            <Button variant="outlined">Reset All</Button>
+            <div className="modal-title">
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                High Scores:
+              </Typography>
+              <Button variant="outlined">Reset All</Button>
+            </div>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
               {highScoresList.map((categoryScore, index) => {
                 return (

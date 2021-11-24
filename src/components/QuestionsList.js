@@ -2,6 +2,14 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import QuestionCard from "./QuestionCard";
 import Score from "./Score";
+import styled from "styled-components";
+
+const StyledList = styled.div`
+  h4 {
+    text-align: center;
+    color: #2076d2;
+  }
+`;
 
 const QuestionsList = (props) => {
   const { questions } = props;
@@ -15,16 +23,18 @@ const QuestionsList = (props) => {
   }, [questions]);
 
   return (
-    <div>
-      <h2>Current Score: {score} / 20</h2>
+    <StyledList>
       {currentIndex < questions.length ? (
-        <QuestionCard
-          question={questions[currentIndex]}
-          currentIndex={currentIndex}
-          setCurrentIndex={setCurrentIndex}
-          score={score}
-          setScore={setScore}
-        />
+        <div>
+          <h4 className="score">Score: {score}</h4>
+          <QuestionCard
+            question={questions[currentIndex]}
+            currentIndex={currentIndex}
+            setCurrentIndex={setCurrentIndex}
+            score={score}
+            setScore={setScore}
+          />
+        </div>
       ) : (
         <Score
           score={score}
@@ -32,7 +42,7 @@ const QuestionsList = (props) => {
           setCurrentIndex={setCurrentIndex}
         />
       )}
-    </div>
+    </StyledList>
   );
 };
 

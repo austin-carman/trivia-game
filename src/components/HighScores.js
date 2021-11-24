@@ -1,6 +1,17 @@
-import { Button, Modal, Box, Typography } from "@mui/material";
-import { useState } from "react";
+import { Modal, Box, Typography, Button } from "@mui/material";
 import { getHighScores } from "../helperFunctions/helperFunctions";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+
+const StyledModal = styled.div`
+  color: #2076d2;
+
+  .high-score-category {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+`;
 
 const style = {
   position: "absolute",
@@ -14,8 +25,8 @@ const style = {
   p: 4,
 };
 
-const HighScores = () => {
-  const [open, setOpen] = useState(false);
+const HighScores = (props) => {
+  const { viewHighScores, setViewHighScores } = props;
 
   const categories = [
     "General Knowledge",
@@ -24,42 +35,56 @@ const HighScores = () => {
     "Entertainment: Television",
     "Geography",
     "History",
-    "Science and Nature",
+    "Science & Nature",
     "Sports",
   ];
 
   const highScoresList = getHighScores(categories);
 
-  const handleOpen = () => {
-    setOpen(true);
+  const handleClose = () => {
+    setViewHighScores(false);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleReset = (e) => {
+    console.log(e.target);
   };
 
   return (
     <div>
-      <Button onClick={handleOpen}>View high scores</Button>
       <Modal
-        open={open}
+        open={viewHighScores}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            High Scores:
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {highScoresList.map((categoryScore, index) => {
-              return <li key={index}>{categoryScore}</li>;
-            })}
-          </Typography>
+          <StyledModal>
+            <Typography id="modal-modal-title" variant="h6" component="h2">
+              High Scores:
+            </Typography>
+            <Button variant="outlined">Reset All</Button>
+            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              {highScoresList.map((categoryScore, index) => {
+                return (
+                  <div className="high-score-category" key={index}>
+                    <li>{categoryScore}</li>
+                    <Button variant="outlined" onClick={(e) => handleReset(e)}>
+                      Reset
+                    </Button>
+                  </div>
+                );
+              })}
+            </Typography>
+          </StyledModal>
         </Box>
       </Modal>
     </div>
   );
+};
+
+HighScores.propTypes = {
+  viewHighScores: PropTypes.bool,
+  setViewHighScores: PropTypes.func,
 };
 
 export default HighScores;

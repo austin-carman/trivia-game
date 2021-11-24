@@ -11,12 +11,16 @@ import { decodeQuestionObj } from "../helperFunctions/helperFunctions";
 import styled from "styled-components";
 
 const StyledCard = styled.div`
+  button {
+    border-radius: 7px;
+  }
+
   .question-card {
     width: 50%;
     margin: 3% auto;
     text-align: center;
     border: 1px solid #2076d2;
-    border-radius: 10px;
+    border-radius: 7px;
   }
 
   .question {
@@ -24,29 +28,30 @@ const StyledCard = styled.div`
   }
 
   .answers-container {
-    border: 1px solid red;
-    width: 95%;
+    width: 96%;
     margin: 0 auto 3%;
     display: flex;
-    flex-flow: column wrap;
-    height: 40vh;
-    align-items: center;
+    flex-flow: row wrap;
     justify-content: space-evenly;
+    align-items: center;
   }
 
   .answer-buttons {
     padding: 2%;
-    margin: auto 2%;
+    margin: 2% 0;
     width: 40%;
   }
-`;
 
-// trueFalseAnswer: {
-//   margin: 5%
-// },
-// button: {
-//   padding: 1%
-// },
+  .boolean-container {
+    width: 96%;
+  }
+
+  .boolean-answers {
+    width: 25%;
+    margin: 4%;
+    padding: 2%;
+  }
+`;
 
 const QuestionCard = (props) => {
   const { question, currentIndex, setCurrentIndex, score, setScore } = props;
@@ -72,9 +77,9 @@ const QuestionCard = (props) => {
         </CardContent>
         <CardActions className="answers-container">
           {question.type === "boolean" ? (
-            <div>
+            <div className="boolean-container">
               <Button
-                className=""
+                className="boolean-answers"
                 variant="outlined"
                 size="small"
                 onClick={handleClickAnswer}
@@ -82,7 +87,7 @@ const QuestionCard = (props) => {
                 True
               </Button>
               <Button
-                className=""
+                className="boolean-answers"
                 variant="outlined"
                 size="small"
                 onClick={handleClickAnswer}

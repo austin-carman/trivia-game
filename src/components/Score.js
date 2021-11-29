@@ -12,24 +12,41 @@ const StyledScore = styled.div`
   h2 {
     text-align: center;
   }
+
+  .css-15r9s6u-MuiPaper-root-MuiAlert-root .MuiAlert-icon {
+    color: #2076d2;
+  }
 `;
 
 const Score = (props) => {
   const { score, category } = props;
 
   const [highScore, setHighScore] = useState(0);
+  const [isSnackbarOpen, setIsSnackbarOpen] = useState(false);
 
   useEffect(() => {
     const topScore = saveHighScore(score, category);
     setHighScore(topScore);
+    score > topScore && setIsSnackbarOpen(true);
   }, []);
+
+  const handleClose = (reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setIsSnackbarOpen(false);
+  };
 
   return (
     <StyledScore>
       <h2>Score: {score} / 20</h2>
       <h2>Previous High Score: {highScore || 0} / 20</h2>
-      <Snackbar open={score > highScore} autoHideDuration={6000}>
-        <Alert severity="success" sx={{ width: "100%" }}>
+      <Snackbar
+        open={isSnackbarOpen}
+        autoHideDuration={6000}
+        onClose={handleClose}
+      >
+        <Alert severity="success" sx={{ width: "100%", color: "#2076d2" }}>
           Congratulations! New high score in {category}!
         </Alert>
       </Snackbar>

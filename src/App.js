@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <StyledHeader className="App-header">
         <h1>Trivia</h1>
-        <h4>Can master each category?</h4>
+        <h4>Can you master each category?</h4>
         <Form />
       </StyledHeader>
     </div>

@@ -2,14 +2,6 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import QuestionCard from "./QuestionCard";
 import Score from "./Score";
-import styled from "styled-components";
-
-const StyledList = styled.div`
-  h4 {
-    text-align: center;
-    color: #2076d2;
-  }
-`;
 
 const QuestionsList = (props) => {
   const { questions } = props;
@@ -23,10 +15,9 @@ const QuestionsList = (props) => {
   }, [questions]);
 
   return (
-    <StyledList>
+    <div>
       {currentIndex < questions.length ? (
         <div>
-          <h4 className="score">Score: {score}</h4>
           <QuestionCard
             question={questions[currentIndex]}
             currentIndex={currentIndex}
@@ -42,7 +33,7 @@ const QuestionsList = (props) => {
           setCurrentIndex={setCurrentIndex}
         />
       )}
-    </StyledList>
+    </div>
   );
 };
 

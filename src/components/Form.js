@@ -51,7 +51,7 @@ const Form = () => {
     setDisabled(false);
   };
 
-  const handleButtonClick = () => {
+  const handleClickStart = () => {
     axios
       .get(
         `https://opentdb.com/api.php?amount=20&category=${formValues.category}&difficulty=${formValues.difficulty}`
@@ -62,6 +62,10 @@ const Form = () => {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const handleClickHighScores = () => {
+    setViewHighScores(true);
   };
 
   return (
@@ -111,14 +115,14 @@ const Form = () => {
         <Button
           variant="contained"
           disabled={disabled}
-          onClick={handleButtonClick}
+          onClick={handleClickStart}
           className="form-buttons"
         >
           Start
         </Button>
         <Button
           variant="contained"
-          onClick={() => setViewHighScores(true)}
+          onClick={handleClickHighScores}
           className="form-buttons"
         >
           View High Scores

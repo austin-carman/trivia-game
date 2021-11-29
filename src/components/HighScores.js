@@ -65,7 +65,6 @@ const HighScores = (props) => {
       setIsSnackbarOpen(true);
       setTimeout(() => {
         setIsSnackbarOpen(false);
-        handleClose();
       }, 1500);
     } else {
       localStorage.removeItem(categories[e.target.id]);

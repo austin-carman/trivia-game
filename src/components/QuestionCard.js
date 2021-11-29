@@ -11,6 +11,10 @@ import { decodeQuestionObj } from "../helperFunctions/helperFunctions";
 import styled from "styled-components";
 
 const StyledCard = styled.div`
+  .current-score {
+    text-align: center;
+    color: #2076d2;
+  }
   button {
     border-radius: 7px;
   }
@@ -57,19 +61,32 @@ const QuestionCard = (props) => {
   const { question, currentIndex, setCurrentIndex, score, setScore } = props;
 
   const questionObj = decodeQuestionObj(question);
+  const correctAnswer = questionObj.correctAnswer.toUpperCase();
   const answers = [questionObj.correctAnswer, ...questionObj.incorrectAnswers];
   const shuffledAnswers = shuffleArr(answers);
 
   const handleClickAnswer = (e) => {
-    if (e.target.innerText === questionObj.correctAnswer.toUpperCase()) {
-      setScore(score + 1);
+    if (e.target.innerText === correctAnswer) {
+      e.target.style.backgroundColor = "#2076d2";
+      e.target.style.color = "white";
+    } else {
+      e.target.style.backgroundColor = "#d22220";
+      e.target.style.color = "white";
     }
-    setCurrentIndex(currentIndex + 1);
+    setTimeout(() => {
+      e.target.style.backgroundColor = "white";
+      e.target.style.color = "#2076d2";
+      if (e.target.innerText === correctAnswer) {
+        setScore(score + 1);
+      }
+      setCurrentIndex(currentIndex + 1);
+    }, 500);
   };
 
   return (
     <StyledCard>
       <Card className="question-card">
+        <h4 className="current-score">Score: {score}</h4>
         <CardContent>
           <Typography className="question" variant="h5" component="div">
             {questionObj.question}

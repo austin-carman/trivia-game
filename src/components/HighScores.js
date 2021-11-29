@@ -17,7 +17,9 @@ const StyledModal = styled.div`
     display: flex;
     justify-content: space-between;
   }
+`;
 
+const StyledSnackbar = styled.div`
   .css-15r9s6u-MuiPaper-root-MuiAlert-root .MuiAlert-icon {
     color: #2076d2;
   }
@@ -124,11 +126,13 @@ const HighScores = (props) => {
           </StyledModal>
         </Box>
       </Modal>
-      <Snackbar open={isSnackbarOpen} autoHideDuration={1500}>
-        <Alert severity="success" sx={{ width: "100%", color: "#2076d2" }}>
-          Score reset successful.
-        </Alert>
-      </Snackbar>
+      <StyledSnackbar>
+        <Snackbar open={isSnackbarOpen} autoHideDuration={1500}>
+          <Alert severity="success" sx={{ width: "100%", color: "#2076d2" }}>
+            Score reset successful.
+          </Alert>
+        </Snackbar>
+      </StyledSnackbar>
     </div>
   );
 };

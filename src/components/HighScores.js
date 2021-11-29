@@ -31,7 +31,7 @@ const StyledModal = styled.div`
     background-color: white;
     border: 2px solid #2076d2;
     border-radius: 7px;
-    box-shadow: 0px 0px 25px 5px #181a18;
+    box-shadow: 0px 0px 25px 3px #181a18;
     padding: 4%;
   }
 `;

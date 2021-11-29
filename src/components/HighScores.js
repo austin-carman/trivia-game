@@ -5,8 +5,6 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const StyledModal = styled.div`
-  color: #2076d2;
-
   .high-score-category {
     display: flex;
     flex-flow: row wrap;

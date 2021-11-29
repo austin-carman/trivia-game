@@ -129,7 +129,7 @@ const HighScores = (props) => {
       <StyledSnackbar>
         <Snackbar open={isSnackbarOpen} autoHideDuration={1500}>
           <Alert severity="success" sx={{ width: "100%", color: "#2076d2" }}>
-            Score reset successful.
+            Score reset successfully.
           </Alert>
         </Snackbar>
       </StyledSnackbar>

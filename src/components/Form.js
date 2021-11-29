@@ -20,10 +20,6 @@ const StyledForm = styled.div`
   flex-direction: column;
   margin: 3% auto;
 
-  .category-dropdown {
-    color: red;
-  }
-
   .radio-buttons {
     margin: 3% auto;
   }

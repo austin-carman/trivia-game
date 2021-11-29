@@ -22,6 +22,7 @@ const StyledForm = styled.div`
 
   .radio-buttons {
     margin: 3% auto;
+    color: #181a18;
   }
 
   .form-buttons {

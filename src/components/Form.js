@@ -19,12 +19,10 @@ const StyledForm = styled.div`
   display: flex;
   flex-direction: column;
   margin: 3% auto;
-  border: 1px solid green;
 
   .category-dropdown {
     width: 90%;
     margin: auto;
-    border: 1px solid red;
   }
 
   .radio-buttons {

@@ -54,6 +54,27 @@ const StyledCard = styled.div`
     margin: 4%;
     padding: 2%;
   }
+
+  @media (max-width: 425px) {
+    .question-card {
+      width: 98%;
+    }
+    .question {
+      font-size: 1.4rem;
+    }
+    .answer-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .answer-buttons {
+      width: 90%;
+      margin: auto;
+    }
+    .boolean-answers {
+      width: 90%;
+    }
+  }
 `;
 
 const QuestionCard = (props) => {

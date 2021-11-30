@@ -69,7 +69,7 @@ const StyledCard = styled.div`
     }
     .answer-buttons {
       width: 90%;
-      margin: auto;
+      margin: 1% auto;
     }
     .boolean-answers {
       width: 90%;

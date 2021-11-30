@@ -47,17 +47,21 @@ const StyledModal = styled.div`
 
   @media (max-width: 425px) {
     .box-styles {
-      width: 98%;
-    }
-    .high-score-category {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      width: 90%;
+      padding: 0%;
     }
     .modal-title-container {
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-bottom: 4%;
+    }
+    .high-score-category {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0%;
+      border-bottom: 1px solid #2076d2;
     }
   }
 `;

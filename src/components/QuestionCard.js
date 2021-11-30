@@ -12,9 +12,9 @@ import styled from "styled-components";
 
 const StyledCard = styled.div`
   .current-score {
-    text-align: center;
     color: #2076d2;
   }
+
   button {
     border-radius: 7px;
   }
@@ -22,7 +22,6 @@ const StyledCard = styled.div`
   .question-card {
     width: 50%;
     margin: 3% auto;
-    text-align: center;
     border: 1px solid #2076d2;
     border-radius: 7px;
   }
@@ -86,8 +85,8 @@ const QuestionCard = (props) => {
   return (
     <StyledCard>
       <Card className="question-card">
-        <h4 className="current-score">Score: {score}</h4>
         <CardContent>
+          <h4 className="current-score">Score: {score}</h4>
           <Typography className="question" variant="h5" component="div">
             {questionObj.question}
           </Typography>

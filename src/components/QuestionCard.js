@@ -20,7 +20,7 @@ const StyledCard = styled.div`
   }
 
   .question-card {
-    width: 50%;
+    width: 75%;
     margin: 3% auto;
     border: 1px solid #2076d2;
     border-radius: 7px;

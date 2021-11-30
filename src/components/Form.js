@@ -15,10 +15,17 @@ import {
 import styled from "styled-components";
 
 const StyledForm = styled.div`
-  width: 20%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   margin: 3% auto;
+  border: 1px solid green;
+
+  .category-dropdown {
+    width: 90%;
+    margin: auto;
+    border: 1px solid red;
+  }
 
   .radio-buttons {
     margin: 3% auto;
@@ -28,6 +35,18 @@ const StyledForm = styled.div`
   .form-buttons {
     width: 75%;
     margin: 3% auto;
+  }
+
+  @media (max-width: 1040px) {
+    width: 50%;
+  }
+
+  @media (max-width: 520px) {
+    width: 75%;
+  }
+
+  @media (max-width: 345px) {
+    width: 100%;
   }
 `;
 

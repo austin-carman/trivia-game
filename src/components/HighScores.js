@@ -32,6 +32,34 @@ const StyledModal = styled.div`
     box-shadow: 0px 0px 25px 3px #181a18;
     padding: 4%;
   }
+
+  @media (max-width: 1360px) {
+    .box-styles {
+      width: 60%;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .box-styles {
+      width: 75%;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .box-styles {
+      width: 98%;
+    }
+    .high-score-category {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .modal-title-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 `;
 
 const StyledSnackbar = styled.div`

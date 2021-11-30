@@ -12,17 +12,16 @@ import styled from "styled-components";
 
 const StyledCard = styled.div`
   .current-score {
-    text-align: center;
     color: #2076d2;
   }
+
   button {
     border-radius: 7px;
   }
 
   .question-card {
-    width: 50%;
+    width: 75%;
     margin: 3% auto;
-    text-align: center;
     border: 1px solid #2076d2;
     border-radius: 7px;
   }
@@ -55,6 +54,27 @@ const StyledCard = styled.div`
     margin: 4%;
     padding: 2%;
   }
+
+  @media (max-width: 425px) {
+    .question-card {
+      width: 98%;
+    }
+    .question {
+      font-size: 1.4rem;
+    }
+    .answer-container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    .answer-buttons {
+      width: 90%;
+      margin: 1% auto;
+    }
+    .boolean-answers {
+      width: 90%;
+    }
+  }
 `;
 
 const QuestionCard = (props) => {
@@ -86,8 +106,8 @@ const QuestionCard = (props) => {
   return (
     <StyledCard>
       <Card className="question-card">
-        <h4 className="current-score">Score: {score}</h4>
         <CardContent>
+          <h4 className="current-score">Score: {score}</h4>
           <Typography className="question" variant="h5" component="div">
             {questionObj.question}
           </Typography>

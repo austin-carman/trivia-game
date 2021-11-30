@@ -5,35 +5,68 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const StyledModal = styled.div`
-  color: #2076d2;
-
   .high-score-category {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
   }
 
-  .modal-title {
+  .modal-title-container {
     display: flex;
     justify-content: space-between;
   }
 
+  #modal-modal-title {
+    font-weight: bold;
+  }
+
+  .box-styles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25%;
+    background-color: white;
+    border: 2px solid #2076d2;
+    border-radius: 7px;
+    box-shadow: 0px 0px 25px 3px #181a18;
+    padding: 4%;
+  }
+
+  @media (max-width: 1360px) {
+    .box-styles {
+      width: 60%;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .box-styles {
+      width: 75%;
+    }
+  }
+
+  @media (max-width: 425px) {
+    .box-styles {
+      width: 98%;
+    }
+    .high-score-category {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .modal-title-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+`;
+
+const StyledSnackbar = styled.div`
   .css-15r9s6u-MuiPaper-root-MuiAlert-root .MuiAlert-icon {
     color: #2076d2;
   }
 `;
-
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
 
 const HighScores = (props) => {
   const { viewHighScores, setViewHighScores } = props;
@@ -83,9 +116,9 @@ const HighScores = (props) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <StyledModal>
-            <div className="modal-title">
+        <StyledModal>
+          <Box className="box-styles">
+            <div className="modal-title-container">
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 High Scores:
               </Typography>
@@ -121,14 +154,16 @@ const HighScores = (props) => {
                 </Typography>
               );
             })}
-          </StyledModal>
-        </Box>
+          </Box>
+        </StyledModal>
       </Modal>
-      <Snackbar open={isSnackbarOpen} autoHideDuration={1500}>
-        <Alert severity="success" sx={{ width: "100%", color: "#2076d2" }}>
-          Score reset successful.
-        </Alert>
-      </Snackbar>
+      <StyledSnackbar>
+        <Snackbar open={isSnackbarOpen} autoHideDuration={1500}>
+          <Alert severity="success" sx={{ width: "100%", color: "#2076d2" }}>
+            Score reset successfully.
+          </Alert>
+        </Snackbar>
+      </StyledSnackbar>
     </div>
   );
 };

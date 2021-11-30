@@ -14,7 +14,6 @@ export const getHighScores = (categories) => {
   categories.map((category) => {
     highScoresObj[category] = localStorage.getItem(category);
   });
-
   for (const key in highScoresObj) {
     highScoresList.push(`${key}: ${highScoresObj[key] || 0}`);
   }

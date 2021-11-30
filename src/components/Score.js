@@ -39,8 +39,10 @@ const Score = (props) => {
 
   return (
     <StyledScore>
-      <h2>Score: {score} / 20</h2>
-      <h2>Previous High Score: {highScore || 0} / 20</h2>
+      <h2>Score:</h2>
+      <h2>{score} / 20</h2>
+      <h2>Previous High Score:</h2>
+      <h2>{highScore || 0} / 20</h2>
       <Snackbar
         open={isSnackbarOpen}
         autoHideDuration={6000}
